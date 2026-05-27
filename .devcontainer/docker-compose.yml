@@ -1,0 +1,31 @@
+services:
+  app:
+    image: mcr.microsoft.com/devcontainers/base:ubuntu-22.04
+    command: sleep infinity
+    volumes:
+      - ..:/workspaces/roadmap-ecomerce-foundation:cached
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  mysql:
+    image: mysql:8.4
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: roadmap_check
+      MYSQL_USER: roadmap_user
+      MYSQL_PASSWORD: roadmap_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot_password"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+volumes:
+  mysql-data:

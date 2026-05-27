@@ -1,0 +1,54 @@
+{
+  "name": "roadmap-ecommerce-foundation",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/rust:1": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rust-lang.rust-analyzer",
+        "vadimcn.vscode-lldb",
+        "tamasfe.even-better-toml",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "ms-azuretools.vscode-docker",
+        "GitHub.vscode-github-actions"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "editor.formatOnSave": true,
+        "files.eol": "\n"
+      }
+    }
+  },
+
+  "forwardPorts": [
+    3000,
+    5173,
+    "mysql:3306"
+  ],
+
+  "portsAttributes": {
+    "3000": {
+      "label": "Rust Backend"
+    },
+    "5173": {
+      "label": "Frontend Dev Server"
+    },
+    "mysql:3306": {
+      "label": "MySQL"
+    }
+  },
+
+  "postCreateCommand": "bash scripts/check-env.sh || true"
+}
