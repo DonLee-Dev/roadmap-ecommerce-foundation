@@ -50,5 +50,5 @@
     }
   },
 
-  "postCreateCommand": "bash scripts/check-env.sh || true"
+  "postCreateCommand": "sudo apt update && sudo apt install -y default-mysql-client && bash scripts/check-env.sh || true"
 }
