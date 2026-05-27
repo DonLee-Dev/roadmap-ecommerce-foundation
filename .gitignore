@@ -1,0 +1,34 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# Node
+node_modules/
+dist/
+coverage/
+
+# Rust
+target/
+
+# MySQL / Dumps
+*.sql.gz
+*.dump
+
+# Temporary
+tmp/
+temp/
+
+# Codespaces
+*.local
