@@ -15,7 +15,7 @@ Se monto las bases de la configuracion inicial del proyecto en codespace
 3. Revisar que no se haya subido archivos sensibles
 
 ## Checklist
- CHECK = Y ; NO CHECK = N
+
 - [x] El código fue probado en Codespaces
 - [x] No se subieron archivos sensibles
 - [x] No se subió `.env`
